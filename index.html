@@ -3,115 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INNOVA360 AI - Innovation Diagnostic</title>
+  <title>INNOVA360 AI - Innovation Diagnostic Tool</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f8ff;
-      color: #333;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: white;
       text-align: center;
-      padding: 30px;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
     }
     h1 {
-      color: #0056d2;
-      letter-spacing: 2px;
+      font-size: 2.5em;
+      margin: 10px 0;
+    }
+    .tagline {
+      font-style: italic;
+      color: #c7c7c7;
+    }
+    .pillars {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 30px;
+      gap: 20px;
     }
     .pillar {
-      margin: 20px auto;
-      background: white;
-      width: 90%;
-      max-width: 600px;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    label { font-weight: bold; display: block; margin-bottom: 5px; }
-    input[type="range"] { width: 100%; }
-    button {
-      background-color: #0056d2;
-      color: white;
-      padding: 10px 25px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
-    #result {
-      margin-top: 30px;
-      background: white;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
       padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      width: 250px;
+      transition: 0.3s;
+    }
+    .pillar:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.2);
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <h1>INNOVA360 AI</h1>
-  <p><em>"Diagnose. Learn. Transform."</em></p>
+  <header>
+    <h1>INNOVA360 AI</h1>
+    <p class="tagline">"Diagnose. Learn. Transform."</p>
+  </header>
 
-  <form id="innovationForm">
-    <div class="pillar">
-      <label>1️⃣ Vision & Leadership for Innovation</label>
-      <input type="range" min="0" max="100" value="50" id="p1">
-    </div>
-    <div class="pillar">
-      <label>2️⃣ Challenging the Status Quo</label>
-      <input type="range" min="0" max="100" value="50" id="p2">
-    </div>
-    <div class="pillar">
-      <label>3️⃣ Environment & Resources</label>
-      <input type="range" min="0" max="100" value="50" id="p3">
-    </div>
-    <div class="pillar">
-      <label>4️⃣ Talent & Motivation</label>
-      <input type="range" min="0" max="100" value="50" id="p4">
-    </div>
-    <div class="pillar">
-      <label>5️⃣ Experimentation & Risk-Taking</label>
-      <input type="range" min="0" max="100" value="50" id="p5">
-    </div>
-    <div class="pillar">
-      <label>6️⃣ Diversity of Thought</label>
-      <input type="range" min="0" max="100" value="50" id="p6">
-    </div>
-    <div class="pillar">
-      <label>7️⃣ Collaboration</label>
-      <input type="range" min="0" max="100" value="50" id="p7">
-    </div>
-    <button type="button" onclick="calculateScore()">Analyze Innovation</button>
-  </form>
+  <section>
+    <h2>Innovation Diagnostic Framework</h2>
+    <p>INNOVA360 AI helps organizations evaluate their innovation maturity across key pillars using AI insights.</p>
+  </section>
 
-  <div id="result"></div>
+  <section class="pillars">
+    <div class="pillar">
+      <h3>1. Strategic Vision</h3>
+      <p>Evaluates how innovation aligns with the organization's strategic goals and long-term vision.</p>
+    </div>
+    <div class="pillar">
+      <h3>2. Culture of Innovation</h3>
+      <p>Measures the openness to creativity, experimentation, and learning within teams.</p>
+    </div>
+    <div class="pillar">
+      <h3>3. Technological Readiness</h3>
+      <p>Assesses how effectively technology is used to enable innovation processes.</p>
+    </div>
+    <div class="pillar">
+      <h3>4. Leadership & Governance</h3>
+      <p>Examines how leaders promote innovation and support risk-taking in their teams.</p>
+    </div>
+    <div class="pillar">
+      <h3>5. Collaboration Networks</h3>
+      <p>Analyzes the organization’s ability to collaborate across departments and with external partners.</p>
+    </div>
+    <div class="pillar">
+      <h3>6. Learning & Adaptability</h3>
+      <p>Measures how the organization learns from results, adapts to change, and evolves over time.</p>
+    </div>
+    <div class="pillar">
+      <h3>7. Customer-Centric Innovation</h3>
+      <p>Evaluates how customer needs and insights drive the innovation process.</p>
+    </div>
+  </section>
 
-  <script>
-    function calculateScore() {
-      const scores = [
-        +document.getElementById("p1").value,
-        +document.getElementById("p2").value,
-        +document.getElementById("p3").value,
-        +document.getElementById("p4").value,
-        +document.getElementById("p5").value,
-        +document.getElementById("p6").value,
-        +document.getElementById("p7").value
-      ];
-      const avg = scores.reduce((a,b) => a+b, 0) / scores.length;
-      let recommendation = "";
-
-      if (avg >= 80) {
-        recommendation = "Excellent innovation culture! Keep investing in leadership and experimentation.";
-      } else if (avg >= 60) {
-        recommendation = "Good foundation, but focus on collaboration and risk-taking to boost innovation.";
-      } else {
-        recommendation = "Needs improvement. Consider training programs and fostering creative environments.";
-      }
-
-      document.getElementById("result").innerHTML = `
-        <h2>Innovation Score: ${avg.toFixed(1)} / 100</h2>
-        <p>${recommendation}</p>
-      `;
-    }
-  </script>
+  <footer>
+    <p>© 2025 INNOVA360 AI | Powered by GitHub Pages & Artificial Intelligence</p>
+  </footer>
 </body>
 </html>
