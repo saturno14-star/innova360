@@ -1,54 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>INNOVA360 AI - Innovation Diagnostic Tool</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #2b5876, #4e4376);
-      color: white;
-      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
       margin: 0;
       padding: 0;
     }
     header {
+      text-align: center;
+      padding: 30px;
       background: rgba(0, 0, 0, 0.3);
-      padding: 20px;
     }
-    h1 {
-      font-size: 2.5em;
-      margin: 10px 0;
-    }
-    .tagline {
-      font-style: italic;
-      color: #c7c7c7;
-    }
-    .pillars {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 30px;
-      gap: 20px;
-    }
-    .pillar {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 20px;
-      width: 250px;
-      transition: 0.3s;
-    }
-    .pillar:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: scale(1.05);
-    }
-    footer {
-      margin-top: 40px;
+    h1 { font-size: 2.5em; margin-bottom: 5px; }
+    .tagline { font-style: italic; color: #e0e0e0; }
+
+    section { max-width: 900px; margin: auto; padding: 20px; }
+    .question {
+      margin-bottom: 25px;
+      background: rgba(255,255,255,0.1);
       padding: 15px;
-      background: rgba(0, 0, 0, 0.2);
-      font-size: 0.9em;
+      border-radius: 10px;
     }
+    label { display: block; margin: 5px 0; }
+
+    button {
+      background: #00bcd4;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover { background: #0097a7; }
+
+    #results {
+      margin-top: 40px;
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    canvas { background: #fff; border-radius: 10px; margin-top: 20px; }
   </style>
 </head>
 <body>
@@ -58,43 +57,131 @@
   </header>
 
   <section>
-    <h2>Innovation Diagnostic Framework</h2>
-    <p>INNOVA360 AI helps organizations evaluate their innovation maturity across key pillars using AI insights.</p>
+    <h2>Innovation Diagnostic Test</h2>
+    <p>Answer each question (1 = Never, 5 = Always)</p>
+
+    <form id="innovationForm">
+      <!-- Example for one pillar -->
+      <div class="question">
+        <h3>1. Strategic Vision</h3>
+        <label>Our leadership defines a clear innovation strategy.</label>
+        <input type="number" min="1" max="5" name="vision1" required />
+        <label>Innovation goals are aligned with business objectives.</label>
+        <input type="number" min="1" max="5" name="vision2" required />
+        <label>Innovation is part of our long-term vision.</label>
+        <input type="number" min="1" max="5" name="vision3" required />
+      </div>
+
+      <div class="question">
+        <h3>2. Innovation Culture</h3>
+        <label>Employees feel encouraged to share new ideas.</label>
+        <input type="number" min="1" max="5" name="culture1" required />
+        <label>Failures are seen as learning opportunities.</label>
+        <input type="number" min="1" max="5" name="culture2" required />
+        <label>Creativity is rewarded and recognized.</label>
+        <input type="number" min="1" max="5" name="culture3" required />
+      </div>
+
+      <div class="question">
+        <h3>3. Technological Readiness</h3>
+        <label>We use technology to improve processes and services.</label>
+        <input type="number" min="1" max="5" name="tech1" required />
+        <label>We invest in new tools that enhance innovation.</label>
+        <input type="number" min="1" max="5" name="tech2" required />
+        <label>We analyze data to make innovation decisions.</label>
+        <input type="number" min="1" max="5" name="tech3" required />
+      </div>
+
+      <div class="question">
+        <h3>4. Leadership & Empowerment</h3>
+        <label>Leaders promote experimentation and autonomy.</label>
+        <input type="number" min="1" max="5" name="lead1" required />
+        <label>Leadership actively supports innovative projects.</label>
+        <input type="number" min="1" max="5" name="lead2" required />
+        <label>Decision-making encourages creative thinking.</label>
+        <input type="number" min="1" max="5" name="lead3" required />
+      </div>
+
+      <div class="question">
+        <h3>5. Collaboration & Networking</h3>
+        <label>Teams collaborate effectively across departments.</label>
+        <input type="number" min="1" max="5" name="collab1" required />
+        <label>We partner with external organizations for innovation.</label>
+        <input type="number" min="1" max="5" name="collab2" required />
+        <label>Open communication supports teamwork.</label>
+        <input type="number" min="1" max="5" name="collab3" required />
+      </div>
+
+      <div class="question">
+        <h3>6. Adaptability & Learning</h3>
+        <label>We adapt quickly to changes in the market.</label>
+        <input type="number" min="1" max="5" name="learn1" required />
+        <label>We reflect on results to improve future projects.</label>
+        <input type="number" min="1" max="5" name="learn2" required />
+        <label>Continuous learning is encouraged.</label>
+        <input type="number" min="1" max="5" name="learn3" required />
+      </div>
+
+      <div class="question">
+        <h3>7. Customer-Centric Mindset</h3>
+        <label>We collect feedback to improve innovation.</label>
+        <input type="number" min="1" max="5" name="cust1" required />
+        <label>Customer needs guide our innovation efforts.</label>
+        <input type="number" min="1" max="5" name="cust2" required />
+        <label>We involve customers in co-creation processes.</label>
+        <input type="number" min="1" max="5" name="cust3" required />
+      </div>
+
+      <button type="button" onclick="calculateResults()">Submit</button>
+    </form>
+
+    <div id="results"></div>
   </section>
 
-  <section class="pillars">
-    <div class="pillar">
-      <h3>1. Strategic Vision</h3>
-      <p>Evaluates how innovation aligns with the organization's strategic goals and long-term vision.</p>
-    </div>
-    <div class="pillar">
-      <h3>2. Culture of Innovation</h3>
-      <p>Measures the openness to creativity, experimentation, and learning within teams.</p>
-    </div>
-    <div class="pillar">
-      <h3>3. Technological Readiness</h3>
-      <p>Assesses how effectively technology is used to enable innovation processes.</p>
-    </div>
-    <div class="pillar">
-      <h3>4. Leadership & Governance</h3>
-      <p>Examines how leaders promote innovation and support risk-taking in their teams.</p>
-    </div>
-    <div class="pillar">
-      <h3>5. Collaboration Networks</h3>
-      <p>Analyzes the organization’s ability to collaborate across departments and with external partners.</p>
-    </div>
-    <div class="pillar">
-      <h3>6. Learning & Adaptability</h3>
-      <p>Measures how the organization learns from results, adapts to change, and evolves over time.</p>
-    </div>
-    <div class="pillar">
-      <h3>7. Customer-Centric Innovation</h3>
-      <p>Evaluates how customer needs and insights drive the innovation process.</p>
-    </div>
-  </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    function calculateResults() {
+      const form = document.getElementById("innovationForm");
+      const data = new FormData(form);
+      const pillars = {
+        vision: avg(["vision1","vision2","vision3"]),
+        culture: avg(["culture1","culture2","culture3"]),
+        tech: avg(["tech1","tech2","tech3"]),
+        lead: avg(["lead1","lead2","lead3"]),
+        collab: avg(["collab1","collab2","collab3"]),
+        learn: avg(["learn1","learn2","learn3"]),
+        cust: avg(["cust1","cust2","cust3"])
+      };
 
-  <footer>
-    <p>© 2025 INNOVA360 AI | Powered by GitHub Pages & Artificial Intelligence</p>
-  </footer>
+      function avg(keys) {
+        let sum = 0;
+        keys.forEach(k => sum += Number(data.get(k)));
+        return sum / keys.length;
+      }
+
+      const total = Object.values(pillars).reduce((a,b)=>a+b,0)/7;
+      let profile = "";
+      if (total >= 4.2) profile = "Innovator 🌟 - High Innovation Maturity";
+      else if (total >= 3) profile = "Progressive 🚀 - Moderate Innovation";
+      else profile = "Emerging 💡 - Developing Innovation Culture";
+
+      const resultDiv = document.getElementById("results");
+      resultDiv.innerHTML = `<h2>Your Innovation Profile:</h2><h3>${profile}</h3><canvas id='chart' width='400' height='200'></canvas>`;
+
+      const ctx = document.getElementById("chart").getContext("2d");
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Vision", "Culture", "Tech", "Leadership", "Collaboration", "Learning", "Customer"],
+          datasets: [{
+            label: "Innovation Score (1-5)",
+            data: Object.values(pillars),
+            backgroundColor: "#00bcd4"
+          }]
+        },
+        options: { scales: { y: { beginAtZero: true, max: 5 } } }
+      });
+    }
+  </script>
 </body>
 </html>
